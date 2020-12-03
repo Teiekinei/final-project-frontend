@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <title>Movie</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src='js/main.js'></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <h1><a href="index.html">Hello Movie</a></h1>
+    <div class="nav-button">
+      <button>我要訂閱</button>
+    </div>
+  </nav>
+
+  <div class="wrap-overview">
+    <div class="header">
+      <aside class="movie-category">
+        <ul>
+          <li class="nav-item"><a href="#">動作片</a></li>
+          <li class="nav-item"><a href="#">冒險片</a></li>
+          <li class="nav-item"><a href="#">喜劇片</a></li>
+          <li class="nav-item"><a href="#">劇情片</a></li>
+          <li class="nav-item"><a href="#">恐怖片</a></li>
+          <li class="nav-item"><a href="#">奇幻片</a></li>
+          <li class="nav-item"><a href="#">愛情片</a></li>
+          <li class="nav-item"><a href="#">動畫片</a></li>
+          <li class="nav-item"><a href="#">驚悚片</a></li>
+          <li class="nav-item"><a href="#">懸疑片</a></li>
+          <li class="nav-item"><a href="#">科幻片</a></li>
+          <li class="nav-item"><a href="#">歌舞劇</a></li>
+        </ul>
+      </aside>
+      <h2 class="title">動作片</h2>
+      <p>Top 10 newest movie</p>
+    </div>
+    <form class="subscription-card">
+
+      <div class="subscription-item subscription-mail">電子信箱：
+        <input type="email" id="email" name="email"></input>
+      </div>
+      <div class="subscription-item subscription-category">訂閱類型：
+        <input type="checkbox" name="category"> 動作片</input>
+        <input type="checkbox" name="category"> 冒險片</input>
+        <input type="checkbox" name="category"> 喜劇片</input>
+        <input type="checkbox" name="category"> 劇情片</input>
+        <input type="checkbox" name="category"> 恐怖片</input>
+        <input type="checkbox" name="category"> 奇幻片</input>
+        <input type="checkbox" name="category"> 愛情片</input>
+        <input type="checkbox" name="category"> 動畫片</input>
+        <input type="checkbox" name="category"> 驚悚片</input>
+        <input type="checkbox" name="category"> 懸疑片</input>
+        <input type="checkbox" name="category"> 科幻片</input>
+        <input type="checkbox" name="category"> 歌舞劇</input>
+      </div>
+      <div class="subscription-item subscription-cycle">訂閱週期：
+        <input type="radio" name="cycle"> 每週</input>
+        <input type="radio" name="cycle"> 每月</input>
+        <input type="radio" name="cycle"> 每季</input>
+      </div>
+      <div class="subscription-item subscription-btn"><input type="submit" value="我要訂閱"></input></div>
+
+    </form>
+    <div class="movie-list">
+      <div class="card">
+        <div class="ribbon-wrap top_1">
+          <div class="ribbon">最新上映</div>
+        </div>
+        <a href="$url" class="card-item" target="_blank">
+          <div class="card-top">
+            <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="">
+          </div>
+          <div class="card-bottom">
+            <div class="card-title">
+              <p class="card-text">$name</p>
+            </div>
+            <div class="card-info">
+              <button class="btn btn-primary">詳細資訊</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!--for preview-->
+      <div class="card">
+        <a href="$url" class="card-item" target="_blank">
+          <div class="card-top">
+            <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="">
+          </div>
+          <div class="card-bottom">
+            <div class="card-title">
+              <p class="card-text">$name</p>
+            </div>
+            <div class="card-info">
+              <button class="btn btn-primary">詳細資訊</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="$url" class="card-item" target="_blank">
+          <div class="card-top">
+            <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="">
+          </div>
+          <div class="card-bottom">
+            <div class="card-title">
+              <p class="card-text">$name</p>
+            </div>
+            <div class="card-info">
+              <button class="btn btn-primary">詳細資訊</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="$url" class="card-item" target="_blank">
+          <div class="card-top">
+            <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="">
+          </div>
+          <div class="card-bottom">
+            <div class="card-title">
+              <p class="card-text">$name</p>
+            </div>
+            <div class="card-info">
+              <button class="btn btn-primary">詳細資訊</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="$url" class="card-item" target="_blank">
+          <div class="card-top">
+            <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="">
+          </div>
+          <div class="card-bottom">
+            <div class="card-title">
+              <p class="card-text">$name</p>
+            </div>
+            <div class="card-info">
+              <button class="btn btn-primary">詳細資訊</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="$url" class="card-item" target="_blank">
+          <div class="card-top">
+            <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="">
+          </div>
+          <div class="card-bottom">
+            <div class="card-title">
+              <p class="card-text">$name</p>
+            </div>
+            <div class="card-info">
+              <button class="btn btn-primary">詳細資訊</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="$url" class="card-item" target="_blank">
+          <div class="card-top">
+            <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="">
+          </div>
+          <div class="card-bottom">
+            <div class="card-title">
+              <p class="card-text">$name</p>
+            </div>
+            <div class="card-info">
+              <button class="btn btn-primary">詳細資訊</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="$url" class="card-item" target="_blank">
+          <div class="card-top">
+            <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="">
+          </div>
+          <div class="card-bottom">
+            <div class="card-title">
+              <p class="card-text">$name</p>
+            </div>
+            <div class="card-info">
+              <button class="btn btn-primary">詳細資訊</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="$url" class="card-item" target="_blank">
+          <div class="card-top">
+            <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="">
+          </div>
+          <div class="card-bottom">
+            <div class="card-title">
+              <p class="card-text">$name</p>
+            </div>
+            <div class="card-info">
+              <button class="btn btn-primary">詳細資訊</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="$url" class="card-item" target="_blank">
+          <div class="card-top">
+            <img src="https://i.pinimg.com/originals/96/a0/0d/96a00d42b0ff8f80b7cdf2926a211e47.jpg" alt="">
+          </div>
+          <div class="card-bottom">
+            <div class="card-title">
+              <p class="card-text">$name</p>
+            </div>
+            <div class="card-info">
+              <button class="btn btn-primary">詳細資訊</button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!--for preview-->
+
+    </div>
+  </div>
+  <script src="js/index.js"></script>
+</body>
+
+</html>
