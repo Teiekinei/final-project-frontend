@@ -17,9 +17,7 @@ body{
 	position: absolute;
 	margin: 0 0 0 2%;
     font-size: 45px;
-    font-family: 'Black Ops One';
-    text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F,
-    0 0 0.2em #87F
+    font-family: 'Source Code Pro';
 }
 .navbar a{
 	text-decoration: none;
@@ -52,6 +50,46 @@ body{
     background-color: #3c2863;
     color: #fff; 
 }
+/*=============icon animation=================*/
+.navbar-brand h1{    
+    background: linear-gradient(90deg,  #00e1ff 0%,  #fff 100%);    
+    background-position: 100% 100%;    
+    animation: bgSize 0.74s infinite linear alternate;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    display: inline;
+}
+@keyframes bgSize {    
+    0% {background-size: 500% 100%;}
+    /* 25% {background-size: 400% 100%;}
+    50% {background-size: 600% 100%;}
+    75% {background-size: 800% 100%;} */
+    100% {background-size: 100% 100%;}
+}
+.material-icons{
+    color: #fff;
+}
+.send-animation{ 
+    height: 50px;
+    position:absolute;
+    z-index:1;
+    top: 30px;
+    -webkit-animation:sending 1.5s infinite ease-in-out; 
+  }
+  @-webkit-keyframes sending{
+    0%{
+      left:0px;
+      z-index: -99;
+    }
+    10%{
+      z-index: 1;
+      text-shadow:0 0 1em rgb(0 226 255);
+    }
+    100%{
+      left:340px;
+      z-index: -99;  
+    }
+  }
 /*================category===================*/
 .movie-category{
     background-color: #5B5B5B;
@@ -110,6 +148,10 @@ body{
 .header p{
     width: 70%;
     margin: 0 auto;
+    font-family: '微軟正黑體';
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2%;
 }
 /* .header h2:after{
     width: 170px;
@@ -121,12 +163,6 @@ body{
     margin-left: -85px;
     background: -webkit-radial-gradient(50% 50%, ellipse closest-side, #3bc8e7, rgba(255, 42, 112, 0) 80%);
 } */
-.header p{
-    color: #fff;
-    text-align: center;
-    margin-bottom: 2%;
-    font-family: "Varela Round";
-}
 .movie-list{
     display: flex;
     justify-content: space-between;
