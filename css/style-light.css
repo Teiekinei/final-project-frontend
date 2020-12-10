@@ -10,7 +10,7 @@ body{
 	height: 84px;
 	z-index: 2;
 	float: left;
-	background-color: #000;
+	background-color: #5b80ac;
 	width: 100%;
 }
 .navbar .navbar-brand{
@@ -31,10 +31,10 @@ body{
     float: right;
     margin-left: 90%;
     padding: 13px 25px 14px;
-    background-color: #5B5B5B;
+    background-color: #f4c4c2;
     font-size: 18px;
     font-weight: bold;
-    color: #fff;
+    color: #878787;
     border-radius: 10px;
     border-width: 0;
     border-color: initial;
@@ -47,12 +47,12 @@ body{
     position: absolute;
 }
 .navbar .nav-button:hover{
-    background-color: #3c2863;
+    background-color: #a6d5db;
     color: #fff; 
 }
 /*=============icon animation=================*/
 .navbar-brand h1{    
-    background: linear-gradient(90deg,  #00e1ff 0%,  #fff 100%);    
+    background: linear-gradient(90deg, #00e1ff 0%, #fff 100%);    
     background-position: 100% 100%;    
     animation: bgSize 0.74s infinite linear alternate;
     -webkit-text-fill-color: transparent;
@@ -60,11 +60,11 @@ body{
     display: inline;
 }
 @keyframes bgSize {    
-    0% {background-size: 500% 100%;}
+    0% {background-size: 100% 100%;}
     /* 25% {background-size: 400% 100%;}
     50% {background-size: 600% 100%;}
     75% {background-size: 800% 100%;} */
-    100% {background-size: 100% 100%;}
+    100% {background-size: 500% 100%;}
 }
 .material-icons{
     color: #fff;
@@ -92,7 +92,7 @@ body{
   }
 /*================category===================*/
 .movie-category{
-    background-color: #5B5B5B;
+    background-color: #f4c4c2;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     text-align: center;
@@ -122,25 +122,24 @@ body{
     color: #fff;
 }
 .movie-category ul li a:hover{
-    border-bottom: 3px solid #87F;
-    text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F,
-    0 0 0.2em #87F;
+    color: #818787;
+    border-bottom: 3px solid #818787;
 }
-.movie-category .nav-item:nth-child(1){
+.movie-category .nav-item:nth-child(1) a{
     font-size: 20px;
-    text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F,
-    0 0 0.2em #87F;
+    color: #818787;
+    border-bottom: 3px solid #818787;
 }
 /*================overview===================*/
 .wrap-overview{
-    background-color: #3C3C3C;
+    background-color: #ededea;
     width: 100%;
     min-height: 900px;
     margin: 0;
     padding-top: 100px;
 }
 .header h2{
-    color: #fff;
+    color: #545454;
     text-align: center;
     margin-bottom: 2%;
     font-weight: bold;
@@ -149,7 +148,7 @@ body{
     width: 70%;
     margin: 0 auto;
     font-family: '微軟正黑體';
-    color: #fff;
+    color: #545454;
     text-align: center;
     margin-bottom: 2%;
 }
@@ -187,10 +186,11 @@ body{
     flex-wrap: wrap;
 }
 .card{
-    background-color: #5B5B5B;
+    background-color: #a6d5db;
     width: 30%;
-    color: #fff;
+    color: #545454;
     margin-bottom: 6%;
+    border: none;
     border-radius: 10px;
     position: relative;
 }
@@ -222,7 +222,7 @@ body{
 }
 .card:nth-child(2) .movie-genre a{
     display: inline;
-    background-color: #6441a5;
+    background-color: #5b80ac;
     margin: 3px;
     padding: 3px 5px;
     border-radius: 5px;
@@ -260,19 +260,14 @@ body{
     text-align: center;
     padding: 0px 50px;
 }
-.card-info .card-button{
-    text-decoration: none;
-    color: #fff;
-    background-color: #9147ff;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 20px;
-    font-weight: bold;
+.card-info .btn-primary{
+    background-color: #5b80ac;
+    border: none;
     outline: none;
 }
-.card-info .card-button:hover{
-    font-size: 21px;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+.card-info .btn-primary:hover{
+    background-color: #5b80ac;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 /*==========Extra Decoration============*/
 .ribbon-wrap{
@@ -292,7 +287,7 @@ body{
     left: -11px;
     top: 26px;
     width: 148px;    
-    background-color: #9147ff;
+    background-color: #5b80ac;
     color: #fff;
     padding: 5px 0;
     font-size: 14px;
@@ -303,7 +298,7 @@ body{
 }
 .ribbon:before {
     content: "";
-    border-top: 4px solid #3c2863;
+    border-top: 4px solid #2d3e53;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     position: absolute;
@@ -312,7 +307,7 @@ body{
 }
 .ribbon:after {
     content: "";
-    border-top: 4px solid #6441a5;
+    border-top: 4px solid #2d3e53;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     position: absolute;
@@ -367,16 +362,17 @@ body{
     }
     .navbar .nav-item:last-child a{
         font-size: x-large;
-        color: #87F;
-        text-shadow: 0 0 0.2em #fff, 0 0 0.2em #fff,
-    0 0 0.2em #fff;
+        color: #5b80ac;
+        background-color: #a6d5db;
+        border-radius: 10px;
+        padding: 5px 10px;
     }
     .navbar .nav-item:last-child a:hover{
-        border-bottom: 3px solid #87F;
+        border-bottom: 3px solid #5b80ac;
     }
     .movie-category{
-        top: 11%;
-        background-color: #5B5B5B;
+        top: 10%;
+        background-color: #f4c4c2;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         margin: 0 auto;
@@ -406,7 +402,7 @@ body{
 
 @media(max-width: 500px){
     .navbar .navbar-brand{
-        margin: 0 50% 0 0;
+        margin: 0 20% 0 0;
         font-size: 25px;
     }
     .card .card-text{
