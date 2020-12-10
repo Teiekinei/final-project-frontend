@@ -31,10 +31,10 @@ body{
     float: right;
     margin-left: 90%;
     padding: 13px 25px 14px;
-    background-color: #f4c4c2;
+    background-color: #ededea;
     font-size: 18px;
     font-weight: bold;
-    color: #878787;
+    color: #5b80ac;
     border-radius: 10px;
     border-width: 0;
     border-color: initial;
@@ -106,6 +106,7 @@ body{
     float: left;
     position: fixed;
     z-index: 99;
+    transition: margin-left 0.5s;
 }
 .movie-category:hover{
     margin-left: -20px;
@@ -119,7 +120,7 @@ body{
 }
 .movie-category ul li a{
     text-decoration: none;
-    color: #fff;
+    color: #5b80ac;
 }
 .movie-category ul li a:hover{
     color: #818787;
@@ -313,6 +314,17 @@ body{
     position: absolute;
     bottom: -4px;
     right: 0;
+}
+/*===============footer==================*/
+.page-footer{
+    background-color: #5b80ac;
+    color: #fff;
+}
+.page-footer a{
+    color: #fff;
+}
+.page-footer a:hover{
+    color: #fff;
 }
 /*================RWD===================*/
 @media(max-width: 1300px){
