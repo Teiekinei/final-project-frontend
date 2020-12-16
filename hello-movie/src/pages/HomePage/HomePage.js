@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { getMovies } from "../../WebAPI";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+const moviesPerPage = 7;
+let arrayForHoldingMovies = [];
 
 const Root = styled.div`
   background-color: #ededea;
   width: 100%;
   min-height: 900px;
   margin: 0;
-  padding-top: 100px;
+  padding: 100px 0 20px;
 `;
 const MovieContainer = styled.div`
   display: flex;
@@ -87,6 +89,23 @@ const Button = styled.button`
   }
 `;
 
+const LoadMore = styled.button`
+  margin: 0 auto;
+  width: 200px;
+  height: 40px;
+  background-color: #a6d5db;
+  border-radius: 3px;
+  display: block;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    background: #5b80ac;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+`;
+
 function Movie({ movie }) {
   return (
     <Card>
@@ -102,10 +121,19 @@ function Movie({ movie }) {
 }
 
 export default function HomePage() {
+  const [visibleMovies, setvisibleMovies] = useState(7);
   const [movies, setMovies] = useState([]);
+
+  console.log(visibleMovies);
+  console.log(setvisibleMovies);
   useEffect(() => {
     getMovies().then((movies) => setMovies(movies));
   }, []);
+
+  const handleShowMoreMovies = () => {
+    setvisibleMovies((preVisibleMovies) => preVisibleMovies + 7);
+  };
+
   return (
     <Root>
       <Intro>
@@ -113,10 +141,13 @@ export default function HomePage() {
         提供最新上映電影訂閱服務，可依喜好電影類型訂閱，即時獲取最新電影資訊！
       </Intro>
       <MovieContainer>
-        {movies.map((movie) => (
+        {movies.slice(0, visibleMovies).map((movie) => (
           <Movie key={movie.id} movie={movie} />
         ))}
       </MovieContainer>
+      {visibleMovies < movies.length && (
+        <LoadMore onClick={handleShowMoreMovies}>載入更多...</LoadMore>
+      )}
     </Root>
   );
 }

@@ -64,6 +64,7 @@ const SubscribeButton = styled.button`
   border-radius: 10px;
   border-width: 0;
   border-color: initial;
+  cursor: pointer;
   &:hover {
     background-color: #a6d5db;
     color: #fff;
