@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import HomePage from "../../pages/HomePage";
 import ActionPage from "../../pages/ActionPage";
 import Header from "../Header";
@@ -13,7 +13,11 @@ export default function App() {
     <Root>
       <Router>
         <Header />
-        <HomePage />
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+        </Switch>
         <Footer />
       </Router>
     </Root>

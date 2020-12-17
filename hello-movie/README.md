@@ -1,70 +1,16 @@
-# Getting Started with Create React App
+# 最新上映院線電影訂閱通知網站
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+會想做這個網站是因為我很愛看電影，但是每次想要知道最近有什麼新電影上映都要開電影院的網站或是 App 查看，覺得很麻煩，所以就興起了一個念頭，那不如就來做個網站吧!根據類型將電影分類，我可以根據我喜歡的電影類型訂閱電影上映通知，一旦有該類型電影要上映或即將上映，就會寄簡訊或電子郵件通知我，我就可以知道有什麼超棒的電影上映了!
 
-## Available Scripts
+## 使用者故事
 
-In the project directory, you can run:
+### 前端
 
-### `yarn start`
+1. 身為一個電影愛好者，我希望主頁可以顯示最新的 5~10 部電影。p1
+2. 身為一個電影愛好者，我希望顯示的最新 5~10 部電影，點下去後會秀出該電影的簡介，例如: 劇情簡介、預告片、電影時長等。p2
+3. 身為一個鬼片愛好者，我希望主頁可以有分類按鈕，按下去就會顯示最新的 5\~10 部該類型電影，例如: 點下"鬼片"按鈕後，就會出現最新的 5~10 部鬼片資料。p1
+4. 身為一個電影愛好者，我希望能夠有個訂閱按鈕，按下後，能夠選擇要訂閱的電影類型，只需要輸入我的手機或電子郵件，電影上映時或即將上映就會通知我。p1
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 技術棧
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+前端-React + Styled components

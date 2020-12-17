@@ -1,9 +1,7 @@
-import { useEffect, useState, useRef } from "react";
-import { getMovies } from "../../WebAPI";
+import { useEffect, useState } from "react";
+import { getLatestMovies } from "../../WebAPI";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-const moviesPerPage = 7;
-let arrayForHoldingMovies = [];
 
 const Root = styled.div`
   background-color: #ededea;
@@ -128,10 +126,8 @@ export default function HomePage() {
   const [visibleMovies, setvisibleMovies] = useState(7);
   const [movies, setMovies] = useState([]);
 
-  console.log(visibleMovies);
-  console.log(setvisibleMovies);
   useEffect(() => {
-    getMovies().then((movies) => setMovies(movies));
+    getLatestMovies().then((movies) => setMovies(movies));
   }, []);
 
   const handleShowMoreMovies = () => {
