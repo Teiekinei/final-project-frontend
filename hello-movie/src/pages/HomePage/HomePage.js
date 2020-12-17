@@ -89,6 +89,10 @@ const Button = styled.button`
   }
 `;
 
+const CardEmpty = styled.div`
+  width: 30%;
+`;
+
 const LoadMore = styled.button`
   margin: 0 auto;
   width: 200px;
@@ -144,6 +148,8 @@ export default function HomePage() {
         {movies.slice(0, visibleMovies).map((movie) => (
           <Movie key={movie.id} movie={movie} />
         ))}
+        <CardEmpty></CardEmpty>
+        <CardEmpty></CardEmpty>
       </MovieContainer>
       {visibleMovies < movies.length && (
         <LoadMore onClick={handleShowMoreMovies}>載入更多...</LoadMore>
