@@ -68,6 +68,7 @@ const CardTop = styled.div`
   display: flex;
 `;
 const CardBottom = styled.div`
+  width: 95%;
   display: flex;
   margin-bottom: 20px;
   flex-flow: column;
@@ -85,6 +86,9 @@ const Title = styled.div`
 `;
 const ReleaseDate = styled.div`
   margin: 0 10%;
+  & span{
+    color: #5b80ac;
+  }
 `
 const CloseButton = styled.button`
   position: absolute;
@@ -100,25 +104,38 @@ const CloseButton = styled.button`
   line-height: 1.5;
 `;
 const Director = styled.div`
-  
+  & span{
+    color: #5b80ac;
+  }
 `;
 
 const Rating = styled.div`
-  
+  & span{
+    color: #5b80ac;
+  }  
 `;
 
 const Runtime = styled.div`
+  & span{
+    color: #5b80ac;
+  }
 `;
 
 const Story = styled.div`
-  width: 95%;
+  word-wrap: break-word;
+  white-space: pre-line;
+  & span{
+    color: #5b80ac;
+  }
 `;
 
 const Actors = styled.div`
-  display: inline;
+  display: inline;  
 `;
 const ActorsContainer = styled.div`
-  
+  & span{
+    color: #5b80ac;
+  }
 `;
 const Trailer = styled.div`
   position: relative;
@@ -133,7 +150,7 @@ function MovieIntro({ movie, display, setIntroDisplay }) {
     <Card>
       <CardLeft>
         <Poster src={movie.imgSrc}></Poster>
-        <ReleaseDate>上映日期：{new Date(movie.releaseDate).toLocaleDateString()}</ReleaseDate>
+        <ReleaseDate><span>上映日期：</span>{new Date(movie.releaseDate).toLocaleDateString()}</ReleaseDate>
       </CardLeft>
       <CardRight>
         <CardTop>
@@ -148,14 +165,14 @@ function MovieIntro({ movie, display, setIntroDisplay }) {
           }}>×</CloseButton>
         </CardTop>
         <CardBottom>
-          <ActorsContainer>演員：{movie.actors.map(data => {
-            return <Actors>{data + ", "}</Actors>
+          <ActorsContainer><span>演員：</span>{movie.actors.map((data, index, actorsArray) => {
+            return (actorsArray.length - index > 1) ? <Actors>{data + ", "}</Actors> : <Actors>{data}</Actors>
           })}</ActorsContainer>
-          <Director>導演：{movie.director}</Director>
-          <Runtime>片長：{movie.runtime}</Runtime>
-          <Rating>IMDb 分數：{movie.imdbRating}</Rating>
+          <Director><span>導演：</span>{movie.director}</Director>
+          <Runtime><span>片長：</span>{movie.runtime}</Runtime>
+          <Rating><span>IMDb 分數：</span>{movie.imdbRating}</Rating>
           <hr></hr>
-          <Story>劇情介紹：{movie.story.replaceAll("\r\n", "<br />")}</Story>
+          <Story><span>劇情介紹：</span>{movie.story}</Story>
           <hr></hr>
           {
             (movie.trailer.indexOf('youtube.com') === 12) ? <Trailer><iframe width="640" height="360" src={movie.trailer}></iframe></Trailer> : null

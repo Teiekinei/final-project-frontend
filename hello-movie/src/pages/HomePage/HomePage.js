@@ -35,6 +35,7 @@ const Card = styled.div`
   background-color: #a6d5db;
   width: 30%;
   color: #545454;
+  font-family: "sans-serif", "微軟正黑體";
   margin-bottom: 6%;
   border-radius: 10px;
   position: relative;
@@ -50,19 +51,21 @@ const CardTop = styled.img`
 `;
 const CardBottom = styled.div`
   display: flex;
+  flex-flow: column;
   margin-bottom: 20px;
 `;
 const CardTitle = styled.div`
   font-size: 24px;
   font-weight: bold;
-  margin-left: 10%;
+  text-align: center;
   width: 100%;
   word-wrap: break-word;
 `;
 const CardInfo = styled.div`
-  width: 100%;
+  width: 40%;
   text-align: center;
-  padding: 0px 20px;
+  padding: 20px 20px 0px;
+  margin: 0 auto;
 `;
 const Button = styled.button`
   background-color: #5b80ac;
