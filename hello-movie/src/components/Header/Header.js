@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { ReactComponent as EmailIcon } from './email-white-24dp.svg';
-import { ReactComponent as MovieIcon } from './movie-white-24dp.svg';
-import { ReactComponent as SendIcon } from './send-white-24dp.svg';
-import { useSpring } from "react-spring";
+import { SubscribeButton } from "../SubscribeBtn";
 
 const Navbar = styled.div`
   position: fixed;
@@ -55,35 +52,6 @@ const BrandName = styled.h1`
 const MaterialIcons = styled.div`
   color: #fff;
   display: inline-block;
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-`;
-
-const SubscribeButton = styled.button`
-  float: right;
-  margin-left: 88%;
-  padding: 13px 25px 14px;
-  background-color: #ededea;
-  font-size: 18px;
-  font-weight: bold;
-  color: #5b80ac;
-  border-radius: 10px;
-  border-width: 0;
-  border-color: initial;
-  cursor: pointer;
-  &:hover {
-    background-color: #a6d5db;
-    color: #fff;
-  }
 `;
 
 const NavbarNav = styled.ul`
@@ -106,22 +74,14 @@ const Nav = styled(Link)`
   }
 `;
 
-
-
 export default function Header() {
-  const sendAnime = useSpring({
-    loop: true,
-    from: { x: 0 },
-    to: { x: 180 },
-  });
-
   return (
     <Navbar>
       <Brand to="/">
-        <MaterialIcons style={sendAnime}><SendIcon /></MaterialIcons>
-        <MaterialIcons><MovieIcon /></MaterialIcons>
+        <MaterialIcons>send</MaterialIcons>
+        <MaterialIcons>movie</MaterialIcons>
         <BrandName>Hello Movie</BrandName>
-        <MaterialIcons><EmailIcon /></MaterialIcons>
+        <MaterialIcons>email</MaterialIcons>
       </Brand>
       <SubscribeButton>我要訂閱</SubscribeButton>
       <MovieCategory>
