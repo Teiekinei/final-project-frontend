@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import { SubscribeButton } from "../SubscribeBtn";
 
 const Navbar = styled.div`
   position: fixed;
@@ -51,24 +52,6 @@ const BrandName = styled.h1`
 const MaterialIcons = styled.div`
   color: #fff;
   display: inline-block;
-`;
-
-const SubscribeButton = styled.button`
-  float: right;
-  margin-left: 88%;
-  padding: 13px 25px 14px;
-  background-color: #ededea;
-  font-size: 18px;
-  font-weight: bold;
-  color: #5b80ac;
-  border-radius: 10px;
-  border-width: 0;
-  border-color: initial;
-  cursor: pointer;
-  &:hover {
-    background-color: #a6d5db;
-    color: #fff;
-  }
 `;
 
 const NavbarNav = styled.ul`
