@@ -22,6 +22,6 @@ export default function App() {
         </Switch>
         <Footer />
       </Router>
-    </Root >
+    </Root>
   );
 }
