@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import React from "react";
+import { useEffect, useState } from "react";
 import HomePage from "../../pages/HomePage";
+import IntroPage from "../../pages/IntroPage";
 import ActionPage from "../../pages/ActionPage";
 import Header from "../Header";
 import Footer from "../Footer";
@@ -20,6 +22,6 @@ export default function App() {
         </Switch>
         <Footer />
       </Router>
-    </Root>
+    </Root >
   );
 }
