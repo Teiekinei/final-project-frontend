@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getLatestMovies } from "../../WebAPI";
+import { getAnimationMovies } from "../../WebAPI";
 import styled, { keyframes } from "styled-components";
-import IntroPage from "../../pages/IntroPage";
+import IntroPage from "../IntroPage";
 
 const Root = styled.div`
   background-color: #ededea;
@@ -15,19 +15,6 @@ const MovieContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 10%;
-`;
-
-const Intro = styled.h2`
-  color: #545454;
-  text-align: center;
-  margin-bottom: 2%;
-  font-weight: bold;
-  width: 72%;
-  margin: 0 auto;
-  font-family: "微軟正黑體";
-  color: #545454;
-  text-align: center;
-  margin-bottom: 2%;
 `;
 
 const rotate = keyframes`{
@@ -54,6 +41,19 @@ const Loading = styled.div`
   transform: scale(3);
   max-width: 100vw;
   overflow: hidden;
+`;
+
+const Intro = styled.h2`
+  color: #545454;
+  text-align: center;
+  margin-bottom: 2%;
+  font-weight: bold;
+  width: 72%;
+  margin: 0 auto;
+  font-family: "微軟正黑體";
+  color: #545454;
+  text-align: center;
+  margin-bottom: 2%;
 `;
 
 const Card = styled.div`
@@ -150,14 +150,14 @@ function Movie({ setIntro, movie, display, setIntroDisplay }) {
   );
 }
 
-export default function HomePage() {
+export default function AnimationPage() {
   const [visibleMovies, setvisibleMovies] = useState(9);
   const [movies, setMovies] = useState([]);
   const [intro, setIntro] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getLatestMovies()
+    getAnimationMovies()
       .then((movies) => setMovies(movies))
       .then(() => setIsLoading(false));
   }, []);
@@ -170,10 +170,6 @@ export default function HomePage() {
 
   return (
     <Root>
-      <Intro>
-        Hello Movies
-        提供最新上映電影訂閱服務，可依喜好電影類型訂閱，即時獲取最新電影資訊！
-      </Intro>
       {isLoading && (
         <Loading>
           <Circle />
