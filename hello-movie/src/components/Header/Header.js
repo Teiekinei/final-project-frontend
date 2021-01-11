@@ -22,6 +22,7 @@ const Navbar = styled.div`
 const MovieCategory = styled.div`
   background-color: #f4c4c2;
   border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
   text-align: center;
   font-weight: bold;
   margin-top: 6rem;
