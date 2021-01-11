@@ -3,6 +3,7 @@ import { getLatestMovies } from "../../WebAPI";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import IntroPage from "../../pages/IntroPage";
+import { MEDIA_QUERY_SM, MEDIA_QUERY_MD, MEDIA_QUERY_LG } from "../../constants/style";
 
 const Root = styled.div`
   background-color: #ededea;
@@ -11,24 +12,37 @@ const Root = styled.div`
   margin: 0;
   padding: 100px 0 20px;
 `;
+
 const MovieContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 10%;
+  ${MEDIA_QUERY_SM}{
+    margin: 0;
+  }
 `;
 
-const Intro = styled.h2`
+const Intro = styled.h5`
   color: #545454;
   text-align: center;
   margin-bottom: 2%;
   font-weight: bold;
   width: 72%;
-  margin: 0 auto;
+  margin: 0 auto 2%;
   font-family: "微軟正黑體";
   color: #545454;
   text-align: center;
-  margin-bottom: 2%;
+  ${MEDIA_QUERY_LG}{
+    margin: 5% auto 3%;
+  }
+  ${MEDIA_QUERY_MD}{
+    margin: 5% auto 5%;
+  }
+  ${MEDIA_QUERY_SM}{
+    margin: 10% auto 5%;
+    width: 78%;
+  }
 `;
 
 const Card = styled.div`
@@ -44,42 +58,69 @@ const Card = styled.div`
   // &:hover {
   //   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   // }
+  img{
+    max-height: 60vh;
+  }
+  ${MEDIA_QUERY_LG}{
+    width: 31%;
+    margin-bottom: 3%;
+  }
+  ${MEDIA_QUERY_MD}{
+    width: 47%;
+    margin-bottom: 6%;
+  }
+  ${MEDIA_QUERY_SM}{
+    width: 90%;
+    margin: 3% auto;
+  }
 `;
+
 const CardTop = styled.img`
   width: 90%;
   margin: 5%;
 `;
+
 const CardBottom = styled.div`
   display: flex;
   flex-flow: column;
   margin-bottom: 20px;
 `;
+
 const CardTitle = styled.div`
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: break-spaces;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 `;
+
 const CardInfo = styled.div`
-  width: 40%;
+  width: auto;
   text-align: center;
-  padding: 20px 20px 0px;
+  padding: 20px 0 0;
   margin: 0 auto;
 `;
+
 const Button = styled.button`
   background-color: #5b80ac;
   border: none;
   outline: none;
   cursor: pointer;
-  width: 100%;
+  width: auto;
   text-align: center;
   padding: 6px 12px;
   color: #fff;
   font-size: 16px;
   line-height: 1.5;
-  border-radius: 3px;
-
+  border-radius: 7px;
+ 
   &:hover {
     background-color: #5b80ac;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -95,7 +136,7 @@ const LoadMore = styled.button`
   width: 200px;
   height: 40px;
   background-color: #a6d5db;
-  border-radius: 3px;
+  border-radius: 7px;
   display: block;
   border: none;
   cursor: pointer;
@@ -108,9 +149,6 @@ const LoadMore = styled.button`
 `;
 
 function Movie({ setIntro, movie, display, setIntroDisplay }) {
-  const handleShowMovieIntro = () => {
-
-  }
   return (
     <Card>
       <CardTop src={movie.imgSrc}></CardTop>

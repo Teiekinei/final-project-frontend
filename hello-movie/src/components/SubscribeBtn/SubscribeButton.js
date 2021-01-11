@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { MEDIA_QUERY_SM, MEDIA_QUERY_MD, MEDIA_QUERY_LG } from "../../constants/style";
 
 function MySubscribeButton({ className, children }) {
   const [isSubscribeFormOpen, setIsSubscribeFormOpen] = useState(false);
@@ -137,8 +138,8 @@ function MySubscribeForm({ className }) {
 }
 
 const SubscribeButton = styled(MySubscribeButton)`
-  float: right;
   margin-left: 88%;
+  width: auto;
   padding: 13px 25px 14px;
   background-color: #ededea;
   font-size: 18px;
@@ -148,10 +149,31 @@ const SubscribeButton = styled(MySubscribeButton)`
   border-width: 0;
   border-color: initial;
   cursor: pointer;
-
   &:hover {
     background-color: #a6d5db;
     color: #fff;
+  }
+  ${MEDIA_QUERY_LG} {
+    margin-left: 78%;
+  }
+  ${MEDIA_QUERY_MD} {
+    margin-left: 74%;
+  }
+  ${MEDIA_QUERY_SM} {
+    color: #ededea;
+    background-color: #5b80ac;
+    position: absolute;
+    top: 210px;
+    right: 0;
+    padding: 10px;
+    width: 50px;
+    height: 135px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    &:hover {
+      background-color: #5b80ac;
+      color: #ededea;
+    }
   }
 `;
 export default SubscribeButton;
