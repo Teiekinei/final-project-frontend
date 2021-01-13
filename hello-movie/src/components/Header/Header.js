@@ -132,9 +132,6 @@ export default function Header() {
               紀錄片
             </Nav>
           </NavItem>
-          <NavItem>
-            <Nav to="/order">我要訂閱</Nav>
-          </NavItem>
         </NavbarNav>
       </MovieCategory>
     </Navbar>
