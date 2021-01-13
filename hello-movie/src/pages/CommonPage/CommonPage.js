@@ -30,6 +30,7 @@ const Card = styled.div`
 const CardTop = styled.img`
   width: 90%;
   margin: 5%;
+  background: lightgrey;
 `;
 const CardBottom = styled.div`
   display: flex;
