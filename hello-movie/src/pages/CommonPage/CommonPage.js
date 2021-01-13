@@ -90,20 +90,17 @@ const LoadMore = styled.button`
 `;
 
 function Movie({ setIntro, movie, display, setIntroDisplay }) {
+  const handleShowDetails = () => {
+    setIntro(movie);
+    setIntroDisplay(!display);
+  };
   return (
     <Card>
       <CardTop src={movie.imgSrc}></CardTop>
       <CardBottom>
         <CardTitle>{movie.name}</CardTitle>
         <CardInfo>
-          <Button
-            onClick={() => {
-              setIntro(movie);
-              setIntroDisplay(!display);
-            }}
-          >
-            詳細資訊
-          </Button>
+          <Button onClick={handleShowDetails}>詳細資訊</Button>
         </CardInfo>
       </CardBottom>
     </Card>
@@ -113,12 +110,11 @@ function Movie({ setIntro, movie, display, setIntroDisplay }) {
 export default function CommonPage({ movies }) {
   const [visibleMovies, setvisibleMovies] = useState(9);
   const [intro, setIntro] = useState({});
+  const [display, setIntroDisplay] = useState(false);
 
   const handleShowMoreMovies = () => {
     setvisibleMovies((preVisibleMovies) => preVisibleMovies + 6);
   };
-
-  const [display, setIntroDisplay] = useState(false);
 
   return (
     <Root>
