@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { getLatestMovies } from "../../WebAPI";
-import styled from "styled-components";
+
 import { Link } from "react-router-dom";
 import IntroPage from "../../pages/IntroPage";
 import { MEDIA_QUERY_SM, MEDIA_QUERY_MD, MEDIA_QUERY_LG } from "../../constants/style";
+
+import styled, { keyframes } from "styled-components";
+import CommonPage from "../../pages/CommonPage";
+
 
 const Root = styled.div`
   background-color: #ededea;
@@ -22,6 +26,7 @@ const MovieContainer = styled.div`
     margin: 0;
   }
 `;
+
 
 const Intro = styled.h5`
   color: #545454;
@@ -124,12 +129,14 @@ const Button = styled.button`
   &:hover {
     background-color: #5b80ac;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  }
-`;
 
-const CardEmpty = styled.div`
-  width: 30%;
-`;
+const rotate = keyframes`{
+  to{
+    transform: rotate(1turn)
+
+  }
+}`;
+
 
 const LoadMore = styled.button`
   margin: 0 auto;
@@ -137,16 +144,17 @@ const LoadMore = styled.button`
   height: 40px;
   background-color: #a6d5db;
   border-radius: 7px;
-  display: block;
-  border: none;
-  cursor: pointer;
 
-  &:hover {
-    color: #fff;
-    background: #5b80ac;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  }
+const Circle = styled.div`
+  width: 50px;
+  height: 50px;
+  border: 6px solid #e5e5e5;
+  border-top-color: #51d4db;
+  display: block;
+  animation: ${rotate} 1s infinite;
+  border-radius: 50%;
 `;
+
 
 function Movie({ setIntro, movie, display, setIntroDisplay }) {
   return (
@@ -165,20 +173,26 @@ function Movie({ setIntro, movie, display, setIntroDisplay }) {
   );
 }
 
+const Loading = styled.div`
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(3);
+  max-width: 100vw;
+  overflow: hidden;
+`;
+
+
 export default function HomePage() {
-  const [visibleMovies, setvisibleMovies] = useState(9);
   const [movies, setMovies] = useState([]);
-  const [intro, setIntro] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getLatestMovies().then((movies) => setMovies(movies));
+    getLatestMovies()
+      .then((movies) => setMovies(movies))
+      .then(() => setIsLoading(false));
   }, []);
-
-  const handleShowMoreMovies = () => {
-    setvisibleMovies((preVisibleMovies) => preVisibleMovies + 6);
-  };
-
-  const [display, setIntroDisplay] = useState(false);
 
   return (
     <Root>
@@ -186,19 +200,12 @@ export default function HomePage() {
         Hello Movies
         提供最新上映電影訂閱服務，可依喜好電影類型訂閱，即時獲取最新電影資訊！
       </Intro>
-      {
-        display ? <IntroPage intro={intro} display={display} setIntroDisplay={setIntroDisplay} /> : null
-      }
-      <MovieContainer>
-        {movies.slice(0, visibleMovies).map((movie) => (
-          <Movie setIntro={setIntro} display={display} setIntroDisplay={setIntroDisplay} key={movie.id} movie={movie} />
-        ))}
-        <CardEmpty></CardEmpty>
-        <CardEmpty></CardEmpty>
-      </MovieContainer>
-      {visibleMovies < movies.length && (
-        <LoadMore onClick={handleShowMoreMovies}>載入更多...</LoadMore>
+      {isLoading && (
+        <Loading>
+          <Circle />
+        </Loading>
       )}
+      <CommonPage movies={movies} />
     </Root>
   );
 }

@@ -128,9 +128,17 @@ const Nav = styled(Link)`
     color: #818787;
     border-bottom: 3px solid #818787;
   }
+
+  ${(props) =>
+    props.$active &&
+    `
+    color: #818787;
+    border-bottom: 3px solid #818787;
+  `}
 `;
 
 export default function Header() {
+  const location = useLocation();
   return (
     <Navbar>
       <Brand to="/">
@@ -143,40 +151,43 @@ export default function Header() {
       <MovieCategory>
         <NavbarNav>
           <NavItem>
-            <Nav to="/actions">動作</Nav>
+            <Nav to="/actions" $active={location.pathname === "/actions"}>
+              動作
+            </Nav>
           </NavItem>
           <NavItem>
-            <Nav to="/adventure">冒險</Nav>
+            <Nav to="/drama" $active={location.pathname === "/drama"}>
+              劇情
+            </Nav>
           </NavItem>
           <NavItem>
-            <Nav to="/comedy">喜劇</Nav>
+            <Nav to="/crime" $active={location.pathname === "/crime"}>
+              犯罪
+            </Nav>
           </NavItem>
           <NavItem>
-            <Nav to="/drama">劇情</Nav>
+            <Nav to="/fantasy" $active={location.pathname === "/fantasy"}>
+              奇幻
+            </Nav>
           </NavItem>
           <NavItem>
-            <Nav to="/horror">恐怖</Nav>
+            <Nav to="/romance" $active={location.pathname === "/romance"}>
+              愛情/溫馨
+            </Nav>
           </NavItem>
           <NavItem>
-            <Nav to="/fantasy">奇幻</Nav>
+            <Nav to="/animation" $active={location.pathname === "/animation"}>
+              動畫
+            </Nav>
           </NavItem>
+
           <NavItem>
-            <Nav to="/romance">愛情</Nav>
-          </NavItem>
-          <NavItem>
-            <Nav to="/animation">動畫</Nav>
-          </NavItem>
-          <NavItem>
-            <Nav to="/thriller">驚悚</Nav>
-          </NavItem>
-          <NavItem>
-            <Nav to="/suspense">懸疑</Nav>
-          </NavItem>
-          <NavItem>
-            <Nav to="/sci-fi">科幻</Nav>
-          </NavItem>
-          <NavItem>
-            <Nav to="/musical">歌舞劇</Nav>
+            <Nav
+              to="/documentary"
+              $active={location.pathname === "/documentary"}
+            >
+              紀錄片
+            </Nav>
           </NavItem>
         </NavbarNav>
       </MovieCategory>

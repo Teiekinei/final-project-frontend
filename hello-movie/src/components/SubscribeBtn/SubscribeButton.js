@@ -1,22 +1,47 @@
 import styled from "styled-components";
-import { useState } from "react";
 import { MEDIA_QUERY_SM, MEDIA_QUERY_MD, MEDIA_QUERY_LG } from "../../constants/style";
+import { useRef, useEffect, useState } from "react";
+import { useClickOutside } from "../../hooks.js";
 
-function MySubscribeButton({ className, children }) {
-  const [isSubscribeFormOpen, setIsSubscribeFormOpen] = useState(false);
-
-  function handleOpenForm() {
-    setIsSubscribeFormOpen(!isSubscribeFormOpen);
+const SubscribeButton = styled(MySubscribeButton)`
+  margin-left: 88%;
+  width: auto;
+  padding: 13px 25px 14px;
+  background-color: #ededea;
+  font-size: 18px;
+  font-weight: bold;
+  color: #5b80ac;
+  border-radius: 10px;
+  border-width: 0;
+  border-color: initial;
+  cursor: pointer;
+  &:hover {
+    background-color: #a6d5db;
+    color: #fff;
   }
-  return (
-    <>
-      <button onClick={handleOpenForm} className={className}>
-        {children}
-      </button>
-      {isSubscribeFormOpen ? <MySubscribeForm /> : null}
-    </>
-  );
-}
+  ${MEDIA_QUERY_LG} {
+    margin-left: 78%;
+  }
+  ${MEDIA_QUERY_MD} {
+    margin-left: 74%;
+  }
+  ${MEDIA_QUERY_SM} {
+    color: #ededea;
+    background-color: #5b80ac;
+    position: absolute;
+    top: 210px;
+    right: 0;
+    padding: 10px;
+    width: 50px;
+    height: 135px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    &:hover {
+      background-color: #5b80ac;
+      color: #ededea;
+    }
+  }
+`;
 
 const HomeNewsletter = styled.div`
   padding: 80px 0;
@@ -88,12 +113,57 @@ const HomeNewsletter = styled.div`
     margin-top: 1.2rem;
     margin-bottom: 0;
   }
+  & .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  & .close-btn div {
+    position: relative;
+    flex: none;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    transform: rotate(135deg);
+  }
+  & .close-btn div::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 2px;
+    background: inherit;
+    top: 0;
+    transform: rotate(90deg);
+  }
 `;
 
-function MySubscribeForm({ className }) {
+function MySubscribeForm({ isSubscribeFormOpen, setIsSubscribeFormOpen }) {
+  function handleCloseForm() {
+    setIsSubscribeFormOpen(false);
+  }
+  const formRef = useRef();
+  useClickOutside(formRef, isSubscribeFormOpen, setIsSubscribeFormOpen);
+
   return (
-    <HomeNewsletter>
+    <HomeNewsletter ref={formRef}>
       <div className="container">
+        <div className="close-btn" onClick={handleCloseForm}>
+          <div></div>
+        </div>
         <div className="row">
           <div className="col-sm-12">
             <div className="single">
@@ -137,43 +207,25 @@ function MySubscribeForm({ className }) {
   );
 }
 
-const SubscribeButton = styled(MySubscribeButton)`
-  margin-left: 88%;
-  width: auto;
-  padding: 13px 25px 14px;
-  background-color: #ededea;
-  font-size: 18px;
-  font-weight: bold;
-  color: #5b80ac;
-  border-radius: 10px;
-  border-width: 0;
-  border-color: initial;
-  cursor: pointer;
-  &:hover {
-    background-color: #a6d5db;
-    color: #fff;
+
+function MySubscribeButton({ className, children }) {
+  const [isSubscribeFormOpen, setIsSubscribeFormOpen] = useState(false);
+
+  function handleToggleForm() {
+    setIsSubscribeFormOpen(!isSubscribeFormOpen);
   }
-  ${MEDIA_QUERY_LG} {
-    margin-left: 78%;
-  }
-  ${MEDIA_QUERY_MD} {
-    margin-left: 74%;
-  }
-  ${MEDIA_QUERY_SM} {
-    color: #ededea;
-    background-color: #5b80ac;
-    position: absolute;
-    top: 210px;
-    right: 0;
-    padding: 10px;
-    width: 50px;
-    height: 135px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    &:hover {
-      background-color: #5b80ac;
-      color: #ededea;
-    }
-  }
-`;
+  return (
+    <>
+      <button onClick={handleToggleForm} className={className}>
+        {children}
+      </button>
+      {isSubscribeFormOpen ? (
+        <MySubscribeForm
+          isSubscribeFormOpen={isSubscribeFormOpen}
+          setIsSubscribeFormOpen={setIsSubscribeFormOpen}
+        />
+      ) : null}
+    </>
+  );
+}
 export default SubscribeButton;

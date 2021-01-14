@@ -37,12 +37,12 @@ const Loading = styled.div`
   overflow: hidden;
 `;
 
-export default function ActionPage() {
+export default function CrimePage() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getMoviesByGenre("動作")
+    getMoviesByGenre("犯罪")
       .then((movies) => setMovies(movies))
       .then(() => setIsLoading(false));
   }, []);
