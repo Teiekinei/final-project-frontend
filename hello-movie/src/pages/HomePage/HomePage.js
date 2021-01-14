@@ -3,11 +3,14 @@ import { getLatestMovies } from "../../WebAPI";
 
 import { Link } from "react-router-dom";
 import IntroPage from "../../pages/IntroPage";
-import { MEDIA_QUERY_SM, MEDIA_QUERY_MD, MEDIA_QUERY_LG } from "../../constants/style";
+import {
+  MEDIA_QUERY_SM,
+  MEDIA_QUERY_MD,
+  MEDIA_QUERY_LG,
+} from "../../constants/style";
 
 import styled, { keyframes } from "styled-components";
 import CommonPage from "../../pages/CommonPage";
-
 
 const Root = styled.div`
   background-color: #ededea;
@@ -22,11 +25,10 @@ const MovieContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 10%;
-  ${MEDIA_QUERY_SM}{
+  ${MEDIA_QUERY_SM} {
     margin: 0;
   }
 `;
-
 
 const Intro = styled.h5`
   color: #545454;
@@ -38,13 +40,13 @@ const Intro = styled.h5`
   font-family: "微軟正黑體";
   color: #545454;
   text-align: center;
-  ${MEDIA_QUERY_LG}{
+  ${MEDIA_QUERY_LG} {
     margin: 5% auto 3%;
   }
-  ${MEDIA_QUERY_MD}{
+  ${MEDIA_QUERY_MD} {
     margin: 5% auto 5%;
   }
-  ${MEDIA_QUERY_SM}{
+  ${MEDIA_QUERY_SM} {
     margin: 10% auto 5%;
     width: 78%;
   }
@@ -63,18 +65,18 @@ const Card = styled.div`
   // &:hover {
   //   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   // }
-  img{
+  img {
     max-height: 60vh;
   }
-  ${MEDIA_QUERY_LG}{
+  ${MEDIA_QUERY_LG} {
     width: 31%;
     margin-bottom: 3%;
   }
-  ${MEDIA_QUERY_MD}{
+  ${MEDIA_QUERY_MD} {
     width: 47%;
     margin-bottom: 6%;
   }
-  ${MEDIA_QUERY_SM}{
+  ${MEDIA_QUERY_SM} {
     width: 90%;
     margin: 3% auto;
   }
@@ -125,18 +127,18 @@ const Button = styled.button`
   font-size: 16px;
   line-height: 1.5;
   border-radius: 7px;
- 
+
   &:hover {
     background-color: #5b80ac;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+`;
 
 const rotate = keyframes`{
-  to{
-    transform: rotate(1turn)
-
+  to {
+    transform: rotate(1turn);
   }
 }`;
-
 
 const LoadMore = styled.button`
   margin: 0 auto;
@@ -144,6 +146,7 @@ const LoadMore = styled.button`
   height: 40px;
   background-color: #a6d5db;
   border-radius: 7px;
+`;
 
 const Circle = styled.div`
   width: 50px;
@@ -155,7 +158,6 @@ const Circle = styled.div`
   border-radius: 50%;
 `;
 
-
 function Movie({ setIntro, movie, display, setIntroDisplay }) {
   return (
     <Card>
@@ -163,10 +165,14 @@ function Movie({ setIntro, movie, display, setIntroDisplay }) {
       <CardBottom>
         <CardTitle>{movie.name}</CardTitle>
         <CardInfo>
-          <Button onClick={() => {
-            setIntro(movie);
-            setIntroDisplay(!display);
-          }}>詳細資訊</Button>
+          <Button
+            onClick={() => {
+              setIntro(movie);
+              setIntroDisplay(!display);
+            }}
+          >
+            詳細資訊
+          </Button>
         </CardInfo>
       </CardBottom>
     </Card>
@@ -182,7 +188,6 @@ const Loading = styled.div`
   max-width: 100vw;
   overflow: hidden;
 `;
-
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
