@@ -120,7 +120,9 @@ const Button = styled.button`
   font-size: 16px;
   line-height: 1.5;
   border-radius: 7px;
- 
+  &:focus{
+    outline: none;
+  }
   &:hover {
     background-color: #5b80ac;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -145,6 +147,9 @@ const LoadMore = styled.button`
     color: #fff;
     background: #5b80ac;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  &:focus{
+    outline: none;
   }
 `;
 

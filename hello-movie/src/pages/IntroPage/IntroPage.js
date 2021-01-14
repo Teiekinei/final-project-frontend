@@ -144,12 +144,14 @@ const CloseButton = styled.button`
   right: 0px;
   background-color: initial;
   border: none;
-  outline: none;
   cursor: pointer;
   padding: 0px 16px;
   color: #5b80ac;
   font-size: 36px;
   line-height: 1.5;
+  &:focus{
+    outline: none;
+  }
 `;
 
 const Director = styled.div`

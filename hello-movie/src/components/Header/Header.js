@@ -57,12 +57,12 @@ const flying = keyframes`
   0% { left: 0px; z-index:-99; }
   5% { z-index: 99; }
   95% { z-index:99; }
-  100% { left: 270px; z-index:-99;}
+  100% { left: 270px; z-index:-99; }
 `;
 
 const Brand = styled(Link)`
   position: absolute;
-  width: 100%;
+  width: 60%;
   margin-left: 1%;
   // font-family: "Source Code Pro";
   text-decoration: none;
@@ -78,7 +78,7 @@ const Brand = styled(Link)`
     position: absolute;
     transform: scale(1.3, 1.3);
     top: 8px;  
-    animation: ${flying} 1s linear infinite;
+    animation: ${flying} 3s linear;
   }
   ${MEDIA_QUERY_LG} {
     margin-left: 10%;
@@ -109,7 +109,8 @@ const NavbarNav = styled.ul`
   list-style: none;
   ${MEDIA_QUERY_LG} {
     margin: 0 auto;
-    padding-left: 30px;
+    padding-left: 50px;
+    padding-left: 50px;
   }
 `;
 
@@ -127,6 +128,7 @@ const Nav = styled(Link)`
   &:hover {
     color: #818787;
     border-bottom: 3px solid #818787;
+    text-decoration: none;
   }
 `;
 
