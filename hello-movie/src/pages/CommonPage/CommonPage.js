@@ -1,19 +1,33 @@
 import { useState } from "react";
 import styled from "styled-components";
 import IntroPage from "../IntroPage";
+import {
+  MEDIA_QUERY_SM,
+  MEDIA_QUERY_MD,
+  MEDIA_QUERY_LG,
+} from "../../constants/style";
+
 
 const Root = styled.div`
   background-color: #ededea;
   width: 100%;
   min-height: 900px;
   margin: 0;
-  padding: 100px 0 20px;
+  ${MEDIA_QUERY_SM}{
+    padding-top: 20px;
+  }
 `;
 const MovieContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 10%;
+  ${MEDIA_QUERY_LG} {
+    margin-top: 5%;
+  }
+  ${MEDIA_QUERY_SM} {
+    margin: 0;
+  }
 `;
 
 const Card = styled.div`
@@ -26,10 +40,24 @@ const Card = styled.div`
   position: relative;
   text-decoration: none;
   color: #fff;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+  ${MEDIA_QUERY_LG} {
+    width: 31%;
+    margin-bottom: 3%;
+  }
+  ${MEDIA_QUERY_MD} {
+    width: 47%;
+    margin-bottom: 6%;
+  }
+  ${MEDIA_QUERY_SM} {
+    width: 90%;
+    margin: 3% auto;
+  }
 `;
 const CardTop = styled.img`
   width: 90%;
   margin: 5%;
+  max-height: 80vh;
   background: lightgrey;
 `;
 const CardBottom = styled.div`
@@ -41,13 +69,20 @@ const CardTitle = styled.div`
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: break-spaces;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 `;
 const CardInfo = styled.div`
   width: 40%;
   text-align: center;
-  padding: 20px 20px 0px;
+  padding-top: 20px;
   margin: 0 auto;
 `;
 const Button = styled.button`
@@ -55,14 +90,17 @@ const Button = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  width: 100%;
+  width: auto;
+  white-space: nowrap;
   text-align: center;
   padding: 6px 12px;
   color: #fff;
   font-size: 16px;
   line-height: 1.5;
   border-radius: 3px;
-
+  &:focus{
+    outline: none;
+  }
   &:hover {
     background-color: #5b80ac;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -74,7 +112,7 @@ const CardEmpty = styled.div`
 `;
 
 const LoadMore = styled.button`
-  margin: 0 auto;
+  margin: 0 auto 2%;
   width: 200px;
   height: 40px;
   background-color: #a6d5db;
@@ -87,6 +125,9 @@ const LoadMore = styled.button`
     color: #fff;
     background: #5b80ac;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  &:focus{
+    outline: none;
   }
 `;
 
