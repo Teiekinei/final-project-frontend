@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getLatestMovies } from "../../WebAPI";
+import { getMoviesIntheaters } from "../../WebAPI";
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import IntroPage from "../../pages/IntroPage";
 import {
   MEDIA_QUERY_SM,
@@ -192,12 +192,40 @@ const Loading = styled.div`
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  let { genre } = useParams();
+  switch (genre) {
+    case 'action':
+      genre = "動作";
+      break;
+    case 'drama':
+      genre = "劇情";
+      break;
+    case 'crime':
+      genre = "犯罪";
+      break;
+    case 'fantasy':
+      genre = "奇幻";
+      break;
+    case 'romance':
+      genre = "愛情/溫馨";
+      break;
+    case 'animation':
+      genre = "動畫";
+      break;
+    case 'documentary':
+      genre = "紀錄片";
+      break;
+    default:
+      genre = "";
+  }
+
 
   useEffect(() => {
-    getLatestMovies()
+    getMoviesIntheaters(genre)
       .then((movies) => setMovies(movies))
       .then(() => setIsLoading(false));
-  }, []);
+  }, [genre]);
+
 
   return (
     <Root>
