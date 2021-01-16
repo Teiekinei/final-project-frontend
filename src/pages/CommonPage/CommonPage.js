@@ -30,7 +30,7 @@ const Card = styled.div`
 const CardTop = styled.img`
   width: 90%;
   margin: 5%;
-  background: lightgrey;
+  min-height: 300px;
 `;
 const CardBottom = styled.div`
   display: flex;
@@ -45,7 +45,7 @@ const CardTitle = styled.div`
   word-wrap: break-word;
 `;
 const CardInfo = styled.div`
-  width: 40%;
+  width: 55%;
   text-align: center;
   padding: 20px 20px 0px;
   margin: 0 auto;
