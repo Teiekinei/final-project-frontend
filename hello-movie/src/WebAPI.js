@@ -9,3 +9,7 @@ export function getMoviesByGenre(name) {
 export const getLatestMovies = () => {
   return fetch(`${BASE_URL}/movies-intheaters`).then((res) => res.json());
 };
+
+export const getMovieGenres = () => {
+  return fetch(`${BASE_URL}/movie-genres`).then((res) => res.json());
+};

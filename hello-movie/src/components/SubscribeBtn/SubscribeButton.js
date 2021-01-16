@@ -1,7 +1,12 @@
 import styled from "styled-components";
-import { MEDIA_QUERY_SM, MEDIA_QUERY_MD, MEDIA_QUERY_LG } from "../../constants/style";
+import {
+  MEDIA_QUERY_SM,
+  MEDIA_QUERY_MD,
+  MEDIA_QUERY_LG,
+} from "../../constants/style";
 import { useRef, useEffect, useState } from "react";
 import { useClickOutside } from "../../hooks.js";
+import getMovieGenres from "../../WebAPI";
 
 const SubscribeButton = styled(MySubscribeButton)`
   margin-left: 88%;
@@ -155,6 +160,8 @@ function MySubscribeForm({ isSubscribeFormOpen, setIsSubscribeFormOpen }) {
   function handleCloseForm() {
     setIsSubscribeFormOpen(false);
   }
+
+  function handleSubscribe() {}
   const formRef = useRef();
   useClickOutside(formRef, isSubscribeFormOpen, setIsSubscribeFormOpen);
 
@@ -182,21 +189,9 @@ function MySubscribeForm({ isSubscribeFormOpen, setIsSubscribeFormOpen }) {
               </div>
               <div className="checkbox-group">
                 <p className="checkbox-title">勾選你想要訂閱的電影類型</p>
-                <input type="checkbox" id="action" name="動作" />
+                <input type="checkbox" id="action" name="action" />
                 <label for="action">
                   <span></span>動作
-                </label>
-                <input type="checkbox" id="adventure" name="冒險" />
-                <label for="adventure">
-                  <span></span>冒險
-                </label>
-                <input type="checkbox" id="comedy" name="喜劇" />
-                <label for="comedy">
-                  <span></span>喜劇
-                </label>
-                <input type="checkbox" id="terror" name="恐怖" />
-                <label for="terror">
-                  <span></span>恐怖
                 </label>
               </div>
             </div>
@@ -206,7 +201,6 @@ function MySubscribeForm({ isSubscribeFormOpen, setIsSubscribeFormOpen }) {
     </HomeNewsletter>
   );
 }
-
 
 function MySubscribeButton({ className, children }) {
   const [isSubscribeFormOpen, setIsSubscribeFormOpen] = useState(false);

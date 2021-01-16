@@ -16,5 +16,5 @@ export const useClickOutside = (
     return () => {
       window.removeEventListener("click", handleWindowClick);
     };
-  }, [isSubscribeFormOpen, setIsSubscribeFormOpen]);
+  }, [formRef, isSubscribeFormOpen, setIsSubscribeFormOpen]);
 };

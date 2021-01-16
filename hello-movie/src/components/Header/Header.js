@@ -1,10 +1,14 @@
 import styled, { keyframes } from "styled-components";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { SubscribeButton } from "../SubscribeBtn";
-import { ReactComponent as SendIcon } from "./send-white-24dp.svg"
-import { ReactComponent as EmailIcon } from "./email-white-24dp.svg"
-import { ReactComponent as MovieIcon } from "./movie-white-24dp.svg"
-import { MEDIA_QUERY_SM, MEDIA_QUERY_MD, MEDIA_QUERY_LG } from "../../constants/style";
+import { ReactComponent as SendIcon } from "./send-white-24dp.svg";
+import { ReactComponent as EmailIcon } from "./email-white-24dp.svg";
+import { ReactComponent as MovieIcon } from "./movie-white-24dp.svg";
+import {
+  MEDIA_QUERY_SM,
+  MEDIA_QUERY_MD,
+  MEDIA_QUERY_LG,
+} from "../../constants/style";
 
 const Navbar = styled.div`
   position: fixed;
@@ -50,6 +54,7 @@ const MovieCategory = styled.div`
     border-bottom-right-radius: 0;
     &:hover {
       margin-left: -17px;
+    }
   }
 `;
 
@@ -62,22 +67,22 @@ const flying = keyframes`
 
 const Brand = styled(Link)`
   position: absolute;
-  width: 100%;
+  width: 300px;
   margin-left: 1%;
   // font-family: "Source Code Pro";
   text-decoration: none;
   color: #fff;
-  &:hover{
+  &:hover {
     text-decoration: none;
   }
   svg {
     transform: scale(1.4, 1.4);
     margin: 1% 0% 2% 0%;
   }
-  svg:nth-child(1){
+  svg:nth-child(1) {
     position: absolute;
     transform: scale(1.3, 1.3);
-    top: 8px;  
+    top: 8px;
     animation: ${flying} 1s linear infinite;
   }
   ${MEDIA_QUERY_LG} {
@@ -116,7 +121,7 @@ const NavbarNav = styled.ul`
 const NavItem = styled.li`
   margin: 0px;
   padding: 10px;
-  ${MEDIA_QUERY_LG}{
+  ${MEDIA_QUERY_LG} {
     display: inline;
   }
 `;
