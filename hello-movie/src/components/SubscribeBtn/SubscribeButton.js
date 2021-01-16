@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
   MEDIA_QUERY_SM,
   MEDIA_QUERY_MD,
@@ -6,7 +6,16 @@ import {
 } from "../../constants/style";
 import { useRef, useEffect, useState } from "react";
 import { useClickOutside } from "../../hooks.js";
-import getMovieGenres from "../../WebAPI";
+import { getMovieGenres } from "../../WebAPI";
+
+const sheen = keyframes`
+  0% {
+    transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    transform: skewY(-45deg) translateX(12.5em);
+  }
+`;
 
 const SubscribeButton = styled(MySubscribeButton)`
   margin-left: 88%;
@@ -16,13 +25,38 @@ const SubscribeButton = styled(MySubscribeButton)`
   font-size: 18px;
   font-weight: bold;
   color: #5b80ac;
+  position: relative;
   border-radius: 10px;
   border-width: 0;
   border-color: initial;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
   cursor: pointer;
+  z-index: 999;
+  &:before {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    width: 3em;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -4.5em;
+    transform: skewX(-45deg) translateX(0);
+    transition: none;
+  }
   &:hover {
+    animation: ${sheen};
     background-color: #a6d5db;
     color: #fff;
+    border-bottom: 4px solid darken(#2194e0, 10%);
+    &:before {
+      transform: skewX(-45deg) translateX(13.5em);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  &:focus {
+    outline: none;
   }
   ${MEDIA_QUERY_LG} {
     margin-left: 78%;
@@ -31,20 +65,17 @@ const SubscribeButton = styled(MySubscribeButton)`
     margin-left: 74%;
   }
   ${MEDIA_QUERY_SM} {
-    color: #ededea;
-    background-color: #5b80ac;
+    color: #545454;
+    background-color: #a6d5db;
     position: absolute;
-    top: 210px;
-    right: 0;
-    padding: 10px;
-    width: 50px;
-    height: 135px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    &:hover {
-      background-color: #5b80ac;
-      color: #ededea;
-    }
+    margin-left: 0%;
+    top: 70px;
+    left: 0px;
+    padding: 9px 11px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -154,14 +185,61 @@ const HomeNewsletter = styled.div`
     top: 0;
     transform: rotate(90deg);
   }
+  ${MEDIA_QUERY_LG} {
+    top: 60%;
+  }
+  ${MEDIA_QUERY_MD} {
+    width: 90%;
+  }
+  ${MEDIA_QUERY_SM} {
+    height: 65%;
+    top: 55%;
+    padding: 50px 0;
+    .single h2 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    .close-btn {
+      width: 50px;
+      height: 50px;
+    }
+    .checkbox-title {
+      font-size: 1em;
+    }
+    input[type="checkbox"] + label {
+      font-size: 1em;
+    }
+  }
 `;
 
-function MySubscribeForm({ isSubscribeFormOpen, setIsSubscribeFormOpen }) {
+function MySubscribeForm({
+  isSubscribeFormOpen,
+  setIsSubscribeFormOpen,
+  genreList,
+}) {
   function handleCloseForm() {
     setIsSubscribeFormOpen(false);
   }
-
-  function handleSubscribe() {}
+  function handleOnChecked(e) {
+    console.log(e.target.checked);
+    console.log(e.target.name);
+  }
+  const genreListComponents = genreList.map((genre, i) => {
+    return (
+      <>
+        <input
+          onChange={handleOnChecked}
+          type="checkbox"
+          id={genre + i}
+          name={genre}
+        />
+        <label htmlFor={genre + i}>
+          <span></span>
+          {genre}
+        </label>
+      </>
+    );
+  });
   const formRef = useRef();
   useClickOutside(formRef, isSubscribeFormOpen, setIsSubscribeFormOpen);
 
@@ -189,10 +267,7 @@ function MySubscribeForm({ isSubscribeFormOpen, setIsSubscribeFormOpen }) {
               </div>
               <div className="checkbox-group">
                 <p className="checkbox-title">勾選你想要訂閱的電影類型</p>
-                <input type="checkbox" id="action" name="action" />
-                <label for="action">
-                  <span></span>動作
-                </label>
+                {genreListComponents}
               </div>
             </div>
           </div>
@@ -204,6 +279,10 @@ function MySubscribeForm({ isSubscribeFormOpen, setIsSubscribeFormOpen }) {
 
 function MySubscribeButton({ className, children }) {
   const [isSubscribeFormOpen, setIsSubscribeFormOpen] = useState(false);
+  const [genreList, setGenreList] = useState([]);
+  useEffect(() => {
+    getMovieGenres().then((res) => setGenreList(res));
+  }, [genreList]);
 
   function handleToggleForm() {
     setIsSubscribeFormOpen(!isSubscribeFormOpen);
@@ -217,6 +296,7 @@ function MySubscribeButton({ className, children }) {
         <MySubscribeForm
           isSubscribeFormOpen={isSubscribeFormOpen}
           setIsSubscribeFormOpen={setIsSubscribeFormOpen}
+          genreList={genreList}
         />
       ) : null}
     </>
