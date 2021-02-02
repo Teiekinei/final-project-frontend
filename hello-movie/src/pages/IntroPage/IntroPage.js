@@ -2,26 +2,32 @@ import { useEffect, useState } from "react";
 import { getLatestMovies } from "../../WebAPI";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { MEDIA_QUERY_SM, MEDIA_QUERY_MD, MEDIA_QUERY_LG } from "../../constants/style";
+import {
+  MEDIA_QUERY_SM,
+  MEDIA_QUERY_MD,
+  MEDIA_QUERY_LG,
+  MEDIA_QUERY_XL
+} from "../../constants/style";
 
 const MovieIntroContainer = styled.div`
-  width: 99vw;
+  width: 100vw;
   height: 400vh;
   margin-top: -100%;
   position: fixed;
   background: #00000047;
   z-index: 98;
+  transition: opacity 0.5s;
 `;
 const Card = styled.div`
   color: #545454;
   font-weight: bold;
   width: 70%;
   margin: 0px auto;
-  font-family: "微軟正黑體";
+  font-family: "sans-serif", "微軟正黑體";
   background: #a6d5db;
   position: fixed;
   z-index: 99;
-  height: 556px;
+  height: 80vh;
   top: 13%;
   right: 15%;
   border-radius: 10px;
@@ -39,12 +45,20 @@ const Card = styled.div`
   &::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #5b80ac;
+  }  
+  ${MEDIA_QUERY_XL} {
+    top:10%;
+    height: 85vh;
+  }
+  ${MEDIA_QUERY_LG} {
+    padding: 2%;
   }
   ${MEDIA_QUERY_MD}{
     top: 12%;
     right: 5%;
     width: 90%;
-    height: 85vh;  
+    height: 80vh;
+    padding: 1%;  
     flex-wrap: wrap;
   }
   ${MEDIA_QUERY_SM}{
@@ -67,18 +81,18 @@ const CardRight = styled.div`
   margin: 5% 1% 3% 5%;
   overflow-y: auto;
   &::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #ededea;
-}
-  &::-webkit-scrollbar {
-  width: 12px;
-  background-color: black;
-}
-  &::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #5b80ac;
-}
-  ${MEDIA_QUERY_MD}{
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #ededea;
+  }
+    &::-webkit-scrollbar {
+    width: 12px;
+    background-color: black;
+  }
+    &::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #5b80ac;
+  }
+  ${MEDIA_QUERY_MD} {
     overflow-y: initial;
     width: 100%;
   }
@@ -144,12 +158,14 @@ const CloseButton = styled.button`
   right: 0px;
   background-color: initial;
   border: none;
-  outline: none;
   cursor: pointer;
   padding: 0px 16px;
   color: #5b80ac;
   font-size: 36px;
   line-height: 1.5;
+  &:focus{
+    outline: none;
+  }
 `;
 
 const Director = styled.div`
