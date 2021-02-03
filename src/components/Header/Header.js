@@ -193,7 +193,7 @@ export default function Header() {
       <MovieCategory>
         <NavbarNav>
           <NavItem>
-            <Nav to="/actions" $active={location.pathname === "/actions"}>
+            <Nav to="/action" $active={location.pathname === "/action"}>
               動作
             </Nav>
           </NavItem>

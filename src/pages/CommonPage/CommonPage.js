@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import styled from "styled-components";
 import IntroPage from "../IntroPage";
 import {
@@ -57,6 +57,7 @@ const Card = styled.div`
 const CardTop = styled.img`
   width: 90%;
   margin: 5%;
+  min-height: 300px;
   max-height: 80vh;
   background: lightgrey;
 `;
@@ -80,7 +81,7 @@ const CardTitle = styled.div`
   -webkit-box-orient: vertical;
 `;
 const CardInfo = styled.div`
-  width: 40%;
+  width: 55%;
   text-align: center;
   padding-top: 20px;
   margin: 0 auto;
@@ -157,7 +158,6 @@ export default function CommonPage({ movies }) {
   const handleShowMoreMovies = () => {
     setvisibleMovies((preVisibleMovies) => preVisibleMovies + 6);
   };
-
   return (
     <Root>
       {display ? (

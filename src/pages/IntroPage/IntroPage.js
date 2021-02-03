@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef} from "react";
 import { getLatestMovies } from "../../WebAPI";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -226,8 +226,25 @@ const Trailer = styled.div`
 `
 
 function MovieIntro({ movie, display, setIntroDisplay }) {
+  const introRef = useRef();
+
+  useEffect(() => {
+    function handleClickOutsideIntro(event) {
+      if (
+        !(introRef.current != null && introRef.current.contains(event.target))
+      ) {
+        setIntroDisplay(false);
+      }
+    }
+    window.addEventListener("click", handleClickOutsideIntro);
+    return () => {
+      window.removeEventListener("click", handleClickOutsideIntro);
+    };
+  }, [display, setIntroDisplay]);
+
+
   return (
-    <Card>
+    <Card ref={introRef}>
       <CardLeft>
         <Poster src={movie.imgSrc}></Poster>
         <ReleaseDate><span>上映日期：</span>{new Date(movie.releaseDate).toLocaleDateString()}</ReleaseDate>

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+
 export const useClickOutside = (
   formRef,
   isSubscribeFormOpen,
@@ -7,7 +8,7 @@ export const useClickOutside = (
   useEffect(() => {
     function handleWindowClick(event) {
       if (
-        !(formRef.current != null && formRef.current.contains(event.target))
+        !(formRef.current && formRef.current.contains(event.target))
       ) {
         setIsSubscribeFormOpen(false);
       }
