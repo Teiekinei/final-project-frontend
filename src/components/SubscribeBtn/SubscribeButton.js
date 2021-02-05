@@ -85,6 +85,10 @@ const HomeNewsletter = styled.div`
   max-width: 700px;
   border-radius: 1.5rem;
   font-family: "微軟正黑體";
+  box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 15px,
+    rgba(0, 0, 0, 0.3) -5px -5px 15px,
+    rgba(0, 0, 0, 0.3) 5px -5px 15px,
+    rgba(0, 0, 0, 0.3) -5px 5px 15px;
   & .single {
     max-width: 650px;
     margin: 0 auto;
