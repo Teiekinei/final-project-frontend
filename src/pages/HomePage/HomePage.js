@@ -54,6 +54,7 @@ const Circle = styled.div`
   border: 6px solid #e5e5e5;
   border-top-color: #51d4db;
   display: block;
+  margin-top: 100px;
   animation: ${rotate} 1s infinite;
   border-radius: 50%;
 `;
@@ -62,10 +63,9 @@ const Loading = styled.div`
   min-height: 70vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  transform: scale(3);
   max-width: 100vw;
   overflow: hidden;
+  zoom: 2.5;
 `;
 
 export default function HomePage() {
@@ -94,12 +94,20 @@ export default function HomePage() {
     case 'documentary':
       genre = "紀錄片";
       break;
+    case 'festival':
+      genre = "影展";
+      break;
+    case 'series':
+      genre = "影集";
+      break;
     default:
       genre = "";
   }
 
-
   useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    setIsLoading(true);
     getMoviesIntheaters(genre)
       .then((movies) => setMovies(movies))
       .then(() => setIsLoading(false));
@@ -117,7 +125,9 @@ export default function HomePage() {
           <Circle />
         </Loading>
       )}
-      <CommonPage movies={movies} />
+      {!isLoading && (
+        <CommonPage movies={movies} />
+      )}
     </Root>
   );
 }

@@ -222,12 +222,8 @@ export default function Header() {
               動畫
             </Nav>
           </NavItem>
-
           <NavItem>
-            <Nav
-              to="/documentary"
-              $active={location.pathname === "/documentary"}
-            >
+            <Nav to="/documentary" $active={location.pathname === "/documentary"}>
               紀錄片
             </Nav>
           </NavItem>
