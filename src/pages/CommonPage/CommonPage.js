@@ -41,8 +41,9 @@ const Card = styled.div`
   text-decoration: none;
   color: #fff;
   box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+  text-align: center;
   ${MEDIA_QUERY_LG} {
-    width: 31%;
+    width: 47%;
     margin-bottom: 3%;
   }
   ${MEDIA_QUERY_MD} {
@@ -54,18 +55,23 @@ const Card = styled.div`
     margin: 3% auto;
   }
 `;
+
 const CardTop = styled.img`
   width: 90%;
   margin: 5%;
-  min-height: 300px;
+  height: 70%;
   max-height: 80vh;
-  background: lightgrey;
+  min-height: 300px;
+  max-width: 300px;
+  background: #c4e7e0;
 `;
+
 const CardBottom = styled.div`
   display: flex;
   flex-flow: column;
   margin-bottom: 20px;
 `;
+
 const CardTitle = styled.div`
   font-size: 24px;
   font-weight: bold;
@@ -80,12 +86,14 @@ const CardTitle = styled.div`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 `;
+
 const CardInfo = styled.div`
   width: 55%;
   text-align: center;
   padding-top: 20px;
   margin: 0 auto;
 `;
+
 const Button = styled.button`
   background-color: #5b80ac;
   border: none;
