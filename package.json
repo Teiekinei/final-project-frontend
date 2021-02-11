@@ -34,7 +34,7 @@
       "prettier --write"
     ]
   },
-  "homepage": "https://teiekinei.github.io/final-project-frontend/",
+  "homepage": "https://hello-movie.github.io/Hello-Movie-Frontend/",
   "eslintConfig": {
     "extends": [
       "react-app",
