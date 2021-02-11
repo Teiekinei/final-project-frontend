@@ -1,10 +1,14 @@
 import styled, { keyframes } from "styled-components";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { SubscribeButton } from "../SubscribeBtn";
-import { ReactComponent as SendIcon } from "./send-white-24dp.svg"
-import { ReactComponent as EmailIcon } from "./email-white-24dp.svg"
-import { ReactComponent as MovieIcon } from "./movie-white-24dp.svg"
-import { MEDIA_QUERY_SM, MEDIA_QUERY_MD, MEDIA_QUERY_LG } from "../../constants/style";
+import { Subscribe } from "../Subscribe";
+import { ReactComponent as SendIcon } from "./send-white-24dp.svg";
+import { ReactComponent as EmailIcon } from "./email-white-24dp.svg";
+import { ReactComponent as MovieIcon } from "./movie-white-24dp.svg";
+import {
+  MEDIA_QUERY_SM,
+  MEDIA_QUERY_MD,
+  MEDIA_QUERY_LG,
+} from "../../constants/style";
 
 const Navbar = styled.div`
   position: fixed;
@@ -17,7 +21,7 @@ const Navbar = styled.div`
   justify-content: start;
   align-content: center;
   padding: 8px 16px;
-  box-shadow: 0px 1px 1px rgba(0,0,0,0.3);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
   ${MEDIA_QUERY_SM} {
     justify-content: center;
   }
@@ -37,8 +41,8 @@ const MovieCategory = styled.div`
   justify-content: center;
   position: fixed;
   z-index: 99;
-  transition: margin-left 0.5s;  
-  box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+  transition: margin-left 0.5s;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
   &:hover {
     margin-left: -40px;
   }
@@ -51,8 +55,8 @@ const MovieCategory = styled.div`
     width: 100%;
     margin-top: 62px;
     margin-left: -16px;
-    padding: 10px 0;  
-    box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+    padding: 10px 0;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     &::-webkit-scrollbar {
@@ -63,7 +67,7 @@ const MovieCategory = styled.div`
       margin-left: -16px;
     }
   }
-  ${MEDIA_QUERY_SM} {  
+  ${MEDIA_QUERY_SM} {
     margin-left: 0px;
     &:hover {
       margin-left: 0px;
@@ -102,17 +106,17 @@ const Brand = styled(Link)`
   text-decoration: none;
   white-space: nowrap;
   color: #fff;
-  &:hover{
+  &:hover {
     text-decoration: none;
   }
   svg {
     transform: scale(1.4, 1.4);
     margin: 1% 0% 2% 0%;
   }
-  svg:nth-child(1){
+  svg:nth-child(1) {
     position: absolute;
     transform: scale(1.1, 1.1);
-    top: 10px;  
+    top: 10px;
     animation: ${flying} 12s ease-in-out infinite;
   }
   ${MEDIA_QUERY_LG} {
@@ -120,7 +124,7 @@ const Brand = styled(Link)`
   ${MEDIA_QUERY_SM} {
     width: auto;
     margin: auto;
-    svg{
+    svg {
       display: none;
     }
   }
@@ -140,7 +144,7 @@ const BrandName = styled.h1`
   -webkit-background-clip: text;
   -webkit-background-size: 200% 100%;
   animation: ${moving} 2s linear infinite;
-  `;
+`;
 
 const NavbarNav = styled.ul`
   display: block;
@@ -157,7 +161,7 @@ const NavbarNav = styled.ul`
 const NavItem = styled.li`
   margin: 0px;
   padding: 10px;
-  ${MEDIA_QUERY_LG}{
+  ${MEDIA_QUERY_LG} {
     display: inline;
   }
 `;
@@ -189,7 +193,7 @@ export default function Header() {
         <BrandName>Hello Movie</BrandName>
         <EmailIcon />
       </Brand>
-      <SubscribeButton>我要訂閱</SubscribeButton>
+      <Subscribe>我要訂閱</Subscribe>
       <MovieCategory>
         <NavbarNav>
           <NavItem>
@@ -223,7 +227,10 @@ export default function Header() {
             </Nav>
           </NavItem>
           <NavItem>
-            <Nav to="/documentary" $active={location.pathname === "/documentary"}>
+            <Nav
+              to="/documentary"
+              $active={location.pathname === "/documentary"}
+            >
               紀錄片
             </Nav>
           </NavItem>

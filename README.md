@@ -1,6 +1,6 @@
 # 最新上映院線電影訂閱通知網站
 
-[Hello Movie](https://teiekinei.github.io/final-project-frontend/)
+[Hello Movie](https://hello-movie.github.io/Hello-Movie-Frontend/)
 
 會想做這個網站是因為我很愛看電影，但是每次想要知道最近有什麼新電影上映都要開電影院的網站或是 App 查看，覺得很麻煩，所以就興起了一個念頭，那不如就來做個網站吧!根據類型將電影分類，我可以根據我喜歡的電影類型訂閱電影上映通知，一旦有該類型電影要上映或即將上映，就會寄簡訊或電子郵件通知我，我就可以知道有什麼超棒的電影上映了!
 
