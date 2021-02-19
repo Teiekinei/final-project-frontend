@@ -320,7 +320,7 @@ function MySubscribeButton({ className, children }) {
   const [genreList, setGenreList] = useState([]);
   useEffect(() => {
     getMovieGenres().then((res) => setGenreList(res));
-  }, [genreList]);
+  }, []);
 
   function handleToggleForm() {
     setIsSubscribeFormOpen(!isSubscribeFormOpen);
