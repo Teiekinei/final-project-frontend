@@ -34,7 +34,7 @@
       "prettier --write"
     ]
   },
-  "homepage": "https://hello-movie.github.io/Hello-Movie-Frontend/",
+  "homepage": "https://john-api-server.tw",
   "eslintConfig": {
     "extends": [
       "react-app",
